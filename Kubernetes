@@ -39,6 +39,9 @@ _______________________
 
 1. **Auto-healing** – If a container dies, Kubernetes will automatically create a new one.
 
+
+____________________
+
 2. **Auto-scaling** – If traffic increases, Kubernetes will automatically add more containers. When traffic goes down, it will reduce them.
 
 3. **Multiple Node Support** – Kubernetes can manage containers running on many servers from a single control system.
