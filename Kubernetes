@@ -1,0 +1,29 @@
+# **❌ Problems with Docker**
+
+1. **Single Host Limitation** – Docker normally runs on one server only. Managing containers across many servers is difficult.
+
+2. **No Auto-healing** – If a container crashes, Docker will not restart it automatically.
+
+3. **No Auto-scaling** – If traffic increases, Docker will not create extra containers automatically.
+
+4. **Manual Load Balancing** – You need to set up load balancing manually.
+
+5. **Weak Resource Management** – If one container uses too many resources, other containers may slow down or even crash.
+
+6. **Rolling Updates are Hard** – Deploying new updates without downtime is difficult and manual.
+
+---
+
+## **✅ How Kubernetes Solves These Problems**
+
+1. **Auto-healing** – If a container dies, Kubernetes will automatically create a new one.
+
+2. **Auto-scaling** – If traffic increases, Kubernetes will automatically add more containers. When traffic goes down, it will reduce them.
+
+3. **Multiple Node Support** – Kubernetes can manage containers running on many servers from a single control system.
+
+4. **Built-in Load Balancing** – Kubernetes automatically distributes traffic to healthy containers.
+
+5. **Better Resource Management** – Kubernetes ensures that containers get proper CPU and memory, so one container cannot affect others too much.
+
+6. **Easy Rolling Updates** – Kubernetes can update applications with zero or very less time.
