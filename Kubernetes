@@ -1,3 +1,24 @@
+## 🐳 Why We Need Kubernetes (Docker Problem Example)
+
+- Suppose there are **100 containers running on one Docker host** (1, 2, 3…100).  
+- **One container uses too many resources (CPU/Memory)** compared to others.  
+- Because of this:  
+  - Some containers may **crash (die)** as they don’t get enough resources.  
+  - There may not be enough resources to **create new containers**.  
+- **All containers are on the same single host**, so resource sharing becomes a big problem.  
+- You need to:  
+  - **Manually check** if all containers are running.  
+  - **Manually recreate** any container that has stopped.  
+- **Problem:** Docker has **no auto-healing**. If a container dies, Docker will NOT restart it automatically.  
+
+---
+
+## ✅ Solution – Kubernetes
+
+- **Auto-healing** → If a container (pod) dies, Kubernetes automatically creates a new one.  
+- **No manual monitoring needed** → Kubernetes takes care of container health.  
+_______________________
+
 # **❌ Problems with Docker**
 
 1. **Single Host Limitation** – Docker normally runs on one server only. Managing containers across many servers is difficult.
