@@ -48,3 +48,46 @@ _______________________
 5. **Better Resource Management** – Kubernetes ensures that containers get proper CPU and memory, so one container cannot affect others too much.
 
 6. **Easy Rolling Updates** – Kubernetes can update applications with zero or very less time.
+
+
+
+
+
+Kubernetes architecture operates on a master-worker node model, designed for orchestrating containerized applications.
+
+1. Control Plane (Master Node):
+
+The control plane, typically residing on a master node, manages the overall cluster and its state. Key components include:
+
+kube-apiserver:
+
+The central management entity, exposing the Kubernetes API for communication with other components and external users.
+
+etcd:
+
+A distributed key-value store that stores the cluster's configuration data and state.
+
+kube-scheduler:
+
+Responsible for selecting the optimal node for newly created Pods based on resource requirements, constraints, and policies.
+
+kube-controller-manager:
+
+Runs various controllers that regulate the cluster's state, such as the Replication Controller (ensuring desired number of Pod replicas) and Endpoint Controller (managing network endpoints).
+
+2. Worker Nodes:
+
+Worker nodes are the machines where your containerized applications run within Pods. Each worker node runs: 
+
+kubelet:
+
+An agent that communicates with the control plane, ensuring containers are running in Pods as specified in the PodSpecs. It manages Pods and their containers on the node.
+
+kube-proxy:
+
+A network proxy that maintains network rules on the host, enabling network communication within and outside the cluster by handling service discovery and load balancing for Pods.
+
+Container Runtime:
+
+Software like Docker, containerd, or CRI-O responsible for running and managing containers on the node.
+
