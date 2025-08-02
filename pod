@@ -14,3 +14,17 @@ spec:
       image: nginx:latest
       ports:
         - containerPort: 80
+
+
+apiVersion: v1             # Kubernetes API version
+kind: Pod                  # Resource type (yaha Pod hai)
+metadata:                  # Meta information
+  name: nginx-pod          # Pod ka naam
+  labels:                  # Labels (key-value pairs)
+    app: nginx
+spec:                      # Specification (actual configuration)
+  containers:              # Containers ki list
+    - name: nginx          # Container ka naam
+      image: nginx:latest  # Kaunsa image use hoga
+      ports:               # Kaunsa port expose hoga
+        - containerPort: 80
