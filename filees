@@ -1,1 +1,54 @@
-this is a file.
+          KUBERNETES
+
+
+DOCKER >>> CONTAINER PLATFORM
+KUBERNETES >>> CONTAINER ORCHESTRATION PLATFORM >>> MANAGING CONTAINER 
+
+VIRTUAL MACHINES >>> RUN WEBSITES 
+
+
+CONTAINER >>> EC2 >>> DOCKER INSTALL >>> IMAGE >> WEB CODE  >>> FILE >> WE WRITE CONFIGURATIONS IN THE FILE.
+
+
+
+DOCKERFILE >>> BUILD >> DOCKER IMAGE >> RUN >>> DOCKER CONTAINER >>>> WEBSITE RUN 
+
+
+
+-----------------------------------
+
+MASTER NODE = 
+. API SERVER
+. SCHEDULER
+. CONTROLLER
+. ETCD DATABASE
+
+WORKER NODE
+
+. KUBELET
+. KUBEPROXY
+
+
+KUBECTL CREATE POD >>>  APISERVER >>>
+
+
+
+CREATE POD >>> POD >>>CONTAINER >>> WEBSITE CODE 
+
+
+POD 
+
+
++-----------------------+
+|       Service   
++-----------------------+
+           |
+           v
++-----------------------+
+|     Deployment        |
++-----------------------+
+           |
+           v
++-----------------------+
+|        Pod(s)         |
++-----------------------+
