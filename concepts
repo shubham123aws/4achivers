@@ -1,0 +1,102 @@
+
+---
+ 1: Kubernetes Service
+
+**Heading:**  
+Kubernetes Service
+  
+- Service ek abstraction hai jo network access provide karta hai pods ko.
+- Service automatically pods ke IP address change hone par bhi traffic route karta hai.
+- Types: ClusterIP, NodePort, LoadBalancer
+
+
+```
+          +------------+         +------------+
+          |  Client    |  --->   |  Service   |
+          +------------+         +------------+
+                                        |
+                 +---------+     +---------+
+                 |  Pod 1  |     |  Pod 2  |
+                 +---------+     +---------+
+```
+
+---
+
+ Kubernetes ReplicaSet
+ 
+Kubernetes ReplicaSet 
+
+- ReplicaSet pod ki desired quantity maintain karta hai.
+- Agar koi pod delete ho jaye toh ReplicaSet automatically naya pod create karta hai.
+- Deployment mostly ReplicaSet ke through hi pods manage karta hai.
+
+
+```
+        +-------------------+
+        |   ReplicaSet      |
+        +-------------------+
+           |      |      |
+       +------+ +------+ +------+
+       |Pod 1 | |Pod 2 | |Pod 3 |
+       +------+ +------+ +------+
+```
+
+---
+
+ Kubernetes Deployment
+ 
+Kubernetes Deployment 
+  
+- Deployment high-level object hai jo ReplicaSet ko manage karta hai.
+- Deployment rolling updates, rollback, scaling & strategy manage karta hai.
+- Deployment ke through application easily update ho sakti hai.
+
+
+```
+        +-------------------+
+        |   Deployment      |
+        +-------------------+
+                  |
+          +-------------------+
+          |   ReplicaSet      |
+          +-------------------+
+             |       |       |
+         +------+ +------+ +------+
+         |Pod 1 | |Pod 2 | |Pod 3 |
+         +------+ +------+ +------+
+```
+
+---
+
+ Summary Diagram
+ 
+Kubernetes Architecture - Overview Diagram
+
+**Diagram:**
+
+```
++-------------------+
+|   Deployment      |
++-------------------+
+          |
++-------------------+
+|   ReplicaSet      |
++-------------------+
+          |
++-------------------+
+|      Pods         |
++-------------------+
+          |
++-------------------+
+|    Service        |
++-------------------+
+          ^
+          |
+    +----------+
+    |  Client  |
+    +----------+
+```
+
+---
+
+Aap in diagrams ko PowerPoint shapes (rectangles, arrows) se easily bana sakte hain. Agar image diagrams chahiye toh bataiye, main aapko image banane ka step bata dunga!
