@@ -91,3 +91,21 @@ Container Runtime:
 
 Software like Docker, containerd, or CRI-O responsible for running and managing containers on the node.
 
+DEPLOYMENT >>>
+
++-----------------------------+
+|           DEPLOYMENT        
+|                             |
+|   +-----+  +-----+  +-----+ |
+|   | Pod |  | Pod |  | Pod | |
+|   +-----+  +-----+  +-----+ |
+|   +-----+  +-----+  +-----+ |
+|   | Pod |  | Pod |  | Pod | |
+|   +-----+  +-----+  +-----+ |
+|   +-----+  +-----+  +-----+ |
+|   | Pod |  | Pod |  | Pod | |
+|   +-----+  +-----+  +-----+ |
++-----------------------------+
+
+
+
