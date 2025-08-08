@@ -10,10 +10,12 @@ Containers using Docker
 		Virtual Machines ::::
 			- Hardware level Virtualization.
 			- VMs can be created using Hypervisor.
+            - hypervisor is a tool to install operating system.
 			- VMs are used to run any Operating System
 			- VMs are considered as costly entity, which required huge volume/space, CPU, Bootup time.
 		
 		Hardware --> OS --> Hypervisor --> Create VM --> Install Operating System  --> Run Application
+            - we create vm to run the operating system but we create container to run the application. thats a difference.
 		
 		Containers ::::
 			- Containers are OS Level Virtualization
