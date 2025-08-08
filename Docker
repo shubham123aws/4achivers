@@ -24,6 +24,22 @@ Containers using Docker
 			- It is light weight, consumes less volume, CPU, It is faster in startup.
 			
 		Hardware --> OS --> Container Engine --> Create Containers --> Run Application
+
+VM (Hardware Virtualization)
+----------------------------
+Hardware
+└── Hypervisor
+    ├── VM1 → Guest OS → App
+    ├── VM2 → Guest OS → App
+
+
+Container (OS Virtualization)
+-----------------------------
+Hardware
+└── Host OS (Single Kernel)
+    ├── Container1 → App
+    ├── Container2 → App
+
 		
 		
 		Containers :::
@@ -149,9 +165,23 @@ Containers using Docker
 						
 				-> Background/Detached Mode 
 						docker run -d centos sleep 20
+                        docker container run -d nginx
 						
 				-> Interactive Mode 
 						docker run -it centos bash
+
+     Command Breakdown
+docker run → ek naya container start karta hai.
+
+-i (interactive) → STDIN (keyboard input) container ke liye open rakhta hai. Tum jo type karoge, container ko milega.
+
+-t (tty) → ek terminal allocate karta hai taaki tumhe proper shell interface mile.
+
+centos → ye image ka naam hai (CentOS base OS).
+
+bash → ye command container ke andar chalti hai (Bash shell open karta hai).
+
+                 
 						
 			To Remove Image from local :
 			
