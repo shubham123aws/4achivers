@@ -1,0 +1,167 @@
+
+
+***********************
+Containers using Docker 
+***********************
+		
+		Docker 		
+		Containers
+		
+		Virtual Machines ::::
+			- Hardware level Virtualization.
+			- VMs can be created using Hypervisor.
+			- VMs are used to run any Operating System
+			- VMs are considered as costly entity, which required huge volume/space, CPU, Bootup time.
+		
+		Hardware --> OS --> Hypervisor --> Create VM --> Install Operating System  --> Run Application
+		
+		Containers ::::
+			- Containers are OS Level Virtualization
+			- Can be created using Container Engine like Docker Container Engine/Runtime
+			- Containers are basically used to run Applications. NOT Operating System.
+			- It is light weight, consumes less volume, CPU, It is faster in startup.
+			
+		Hardware --> OS --> Container Engine --> Create Containers --> Run Application
+		
+		
+		Containers :::
+		
+			1. Infra-structure Perspective :::
+				
+				Jenkins_Master ===>	Create Jenkins Jobs & Schedule the jobs 
+					Jenkins_Slave1 ==> Build Server to build application artifacts  -- App Team1 - Java
+					Jenkins_Slave2 ==> App Team 2 -- Python			
+			
+					Jenkins_Slave-n
+					
+				Jenkins_Master(VM)
+					Jenkins_Build_Server(VM1)
+							Container1 --> Java ---> ubuntu Image/Package, jdk, git, maven 
+							Container2 --> .Net
+							Container3 --> Python 
+							............, n no of containers
+			
+			
+			2. Development/Deployment Perspective :::
+			
+				Dev_Environment :::
+					Continous Development :
+							using IDE, create the src_code, ==>  java web application - payment.java 
+							build, create artifacts,		==>  payment.war_v1.0 	==> jdk1.8, maven 
+							unit testing					==>  automated unit testing
+											Dev Envi => The result look good.  		==> jdk1.8, tomcat8.5
+											
+							Using Container :::				
+									payment.war_v1.0 --> Package (payment.war_v1.0,jdk1.8, tomcat8.5) ==> myapppkg1:v1.0
+
+									Deploy myapppkg1:v1.0 to Higher Environment
+									
+					Deployed for further testing 
+						QA 					(jdk1.6, tomcat7) - payment.war_v1.0  ==> here also shd get the same result.
+										Deploy myapppkg1:v1.0 package
+						UAT 				(jdk17, tomcat10) - payment.war_v1.0  ==> here also shd get the same result.
+					Release to PROD 
+						Prod Envi.			(jdk17, tomcat10) - payment.war_v1.0  ==> here also shd get the same result.
+						
+						
+					
+						
+			Terminologies ::::
+			
+			
+				Images				==> a static file - package(payment.war_v1.0,jdk1.8, tomcat8.5)
+										Non-Executable 
+				Containers			==> Executable entity. package(payment.war_v1.0,jdk1.8, tomcat8.5)
+										Executable unit of Container Images
+										Container exist only if there is any task to execute.
+										It is not to execute/run any plain OS. Even, if you run a plain OS in container, it will immediately go to EXIT State.
+										Once the Task is completed, Container will go to EXIT State.
+										
+										Container ==> Jenkins_Tool --> jenkins_Image1(base-OS,jdk,jenkins_repo/I.O,Jenkins)
+										
+										jenkins_Image1(base-OS) 
+										
+				Container Engine	==> Is a tool that is used to create container image and Containers and run the containers 
+										Architecture of Docker Container Engine 
+												- It will use the underlying properties of the Operating System
+														Core of Operating System 
+															kernel -- Namespaces / CGroups									
+				Docker 				==> 
+										Container 
+										Micro Service Based Architecture :::
+						E_Commerce :::
+						
+						sign-up 	--> micro-service1 --> 3 - tier architecture --> 
+											Front-End,Application_Logic,Back_End(DBase)	
+												1 Containers 
+												2
+												3
+						So at anypoint of time, the containers shd be up and running .
+				
+					Container Orchestration Tool ::: is used to orchestrate the containers and it ensure high-availability of containers.
+						Docker Swarm 
+						Kubernetes 
+				
+				
+				Container Registry
+						Container Images are just static files - package(payment.war_v1.0,jdk1.8, tomcat8.5)
+						In order to store the container Images we use Container Registry
+						
+						DockerHub - Registry
+					
+				Container Repositories  ===> Is a subset of Container Registry
+
+				dockerhub.com
+						==> Create an account.
+							Create free account.
+							
+							
+							
+			Installation of Docker Container Engine ::::
+			
+				sudo apt install docker.io -y
+				systemctl status docker
+				
+				
+			Docker Commands :::::
+			
+			docker version 
+			docker images 
+			docker ps 
+			docker ps -a 
+			docker pull <image_name>
+			docker run <image_name>
+			
+			
+			docker pull centos						# pull the latest version 
+			docker pull centos:centos8				# pull the centos version8 using tag.
+			
+			docker run centos						# pull and run the container the latest version 
+			docker run centos:centos8				# pull the centos version8 using tag.
+
+
+			docker run ==> It is used to run the container ::::
+			
+				-> Foreground/Attached Mode 
+						docker run centos sleep 20
+						
+				-> Background/Detached Mode 
+						docker run -d centos sleep 20
+						
+				-> Interactive Mode 
+						docker run -it centos bash
+						
+			To Remove Image from local :
+			
+				docker rmi <image_name>
+				docker rmi -f ubuntu 			# Force removal 	
+				
+			To Remove the container :
+			
+				docker rm <Container_ID>
+				
+			docker inspect <container_id>			# Used to inspect the Docker Objects 
+			
+			docker history <image_name>				# used to get the history/layers of Image 
+
+DevOps Training:::
