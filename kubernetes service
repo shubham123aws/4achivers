@@ -13,3 +13,7 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
+
+
+
+kubectl port-forward service/nginx 8080:80
