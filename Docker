@@ -197,3 +197,12 @@ bash → ye command container ke andar chalti hai (Bash shell open karta hai).
 			docker history <image_name>				# used to get the history/layers of Image 
 
 DevOps Training:::
+
+Core Dockerfile Instructions to Remember
+
+FROM – Set the base image.
+WORKDIR – Set the working directory inside the container.
+COPY / ADD – Copy files into the image.
+RUN – Execute commands (install packages, setup environment, etc.).
+EXPOSE – Expose a port for the application.
+CMD / ENTRYPOINT – Command to run when the container starts.
