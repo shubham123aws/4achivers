@@ -206,3 +206,50 @@ COPY / ADD – Copy files into the image.
 RUN – Execute commands (install packages, setup environment, etc.).
 EXPOSE – Expose a port for the application.
 CMD / ENTRYPOINT – Command to run when the container starts.
+
+
+Dockerfile  >>>
+
+FROM python:3.9-slim
+
+Reason:
+Har Docker image kisi base image se start hoti hai.
+Hume Python chahiye, aur “slim” version chhota hota hai (kam size).
+
+WORKDIR /app
+
+Reason:
+Container ke andar ek default working directory set karta hai.
+Baad ke COPY/RUN commands isi folder me chalenge.
+
+COPY requirements.txt .
+
+Reason:
+Pehle sirf dependencies list copy karte hain taki Docker cache ka use ho sake.
+Agar sirf dependencies badle to puri image dobara build na ho.
+
+RUN pip install -r requirements.txt
+
+Reason:
+Dependencies container ke andar install karta hai.
+RUN build time par execute hota hai.
+
+COPY . .
+
+Reason:
+Project ke baaki saare files container ke andar copy karta hai.
+
+EXPOSE 5000
+
+Reason:
+Batata hai container kaunsa port use karega.
+Sirf informational hai, actual mapping -p ke saath hoti hai runtime par.
+
+CMD ["python", "app.py"]
+
+Reason:
+Batata hai container start hote hi kaunsa command chalega.
+Ye runtime par run hota hai, build time par nahi.
+
+
+
