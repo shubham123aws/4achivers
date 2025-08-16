@@ -164,11 +164,13 @@ Hardware
 						docker run centos sleep 20
 						
 				-> Background/Detached Mode 
-						docker run -d centos sleep 20
+						docker run -d centos:7 sleep 20
                         docker container run -d nginx
 						
 				-> Interactive Mode 
-						docker run -it centos bash
+						docker run -it centos:7 bash
+                        docker run -it centos:7 sleep 30
+
 
      Command Breakdown
 docker run → ek naya container start karta hai.
