@@ -1,8 +1,6 @@
 
 
-## ✅ **AWS Free Tier Compatible EKS Cluster Setup (Ubuntu EC2) – Final Working Commands**
-
-### 🧰 1. **Install AWS CLI (skip if already installed and working)**
+### 🧰 1. **Install AWscli
 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
