@@ -51,9 +51,9 @@ Should return: `Client Version: v1.29.3`
 
 ```bash
 eksctl create cluster \
---name demo-cluster \
+--name demo \
 --region ap-south-1 \
---nodegroup-name demo-nodes \
+--nodegroup-name demo-nodes2 \
 --node-type t3.micro \
 --nodes 2 \
 --nodes-min 1 \
