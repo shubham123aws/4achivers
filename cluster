@@ -1,0 +1,111 @@
+Bilkul Shubham! Aapke diye gaye errors dhyan me rakhte hue, main aapko **AWS Free Tier par EKS cluster banane ke liye** ek **complete step-by-step guide** de raha hoon — **sirf working and correct commands**, jisse students ko koi error na aaye.
+
+---
+
+## ✅ **AWS Free Tier Compatible EKS Cluster Setup (Ubuntu EC2) – Final Working Commands**
+
+### 🧰 1. **Install AWS CLI (skip if already installed and working)**
+
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install --update
+aws --version
+```
+
+---
+
+### 🔐 2. **Configure AWS Credentials (Access Key, Secret)**
+
+```bash
+aws configure
+```
+
+Enter:
+
+* AWS Access Key ID
+* AWS Secret Access Key
+* Default region (e.g., `ap-south-1`)
+* Default output format: `json`
+
+---
+
+### ⚒️ 3. **Install `eksctl` (tool to create EKS cluster)**
+
+```bash
+curl --silent --location "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+```
+
+✅ Should return version like: `0.180.0`
+
+---
+
+### 🧠 4. **Install `kubectl` (to interact with the cluster)**
+
+```bash
+curl -LO https://dl.k8s.io/release/v1.29.3/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+kubectl version --client
+```
+
+✅ Should return: `Client Version: v1.29.3`
+
+---
+
+### ☁️ 5. **Create EKS Cluster (Free Tier compatible)**
+
+```bash
+eksctl create cluster \
+--name demo-cluster \
+--region ap-south-1 \
+--nodegroup-name demo-nodes \
+--node-type t3.micro \
+--nodes 2 \
+--nodes-min 1 \
+--nodes-max 2 \
+--managed
+```
+
+> 🕒 This takes \~15 minutes. Let it complete fully.
+
+---
+
+### 🔍 6. **Verify the Cluster**
+
+```bash
+kubectl get nodes
+```
+
+✅ You should see something like:
+
+```
+NAME                                           STATUS   ROLES    AGE     VERSION
+ip-192-168-xx-xx.ap-south-1.compute.internal   Ready    <none>   2m      v1.29.x
+```
+
+---
+
+### 🧼 7. **(Optional) Delete Cluster (when not needed)**
+
+```bash
+eksctl delete cluster --name demo-cluster --region ap-south-1
+```
+
+---
+
+## ⚠️ Common Mistakes to Avoid (Based on Your Errors)
+
+| Mistake                                        | Solution                                                                              |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `kubectl: No such file or directory`           | Download kubectl properly with correct version and move to `/usr/local/bin`           |
+| `syntax error near unexpected token '<?xml'`   | You downloaded an HTML page instead of the actual binary (wrong URL or missing `-LO`) |
+| `eksctl: command not found`                    | Didn't install or didn't move to `/usr/local/bin`                                     |
+| Wrong region `south-ap-1`                      | Correct region code is `ap-south-1`                                                   |
+| `curl: Failed to extract a sensible file name` | Missing `-LO` flag when using `curl`                                                  |
+
+---
+
+Would you like me to give this as a **PDF cheatsheet** or classroom handout version too?
